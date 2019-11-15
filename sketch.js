@@ -7,6 +7,7 @@
 
 let population;
 let info;
+let season;
 
 function setup() {
   createCanvas(800, 124);
@@ -21,6 +22,8 @@ function setup() {
   button.position(10, 140);
   info = createDiv('');
   info.position(10, 175);
+  season = createDiv('');
+  season.position(10, 200);
 }
 
 function draw() {
@@ -29,10 +32,12 @@ function draw() {
   population.display();
   population.rollover(mouseX, mouseY);
   info.html("Generation #:" + population.getGenerations());
+  season.html("Season #:" + population.getSeason());
 }
 
 // If the button is clicked, evolve next generation
 function nextGen() {
   population.selection();
   population.reproduction();
+  population.changeSeason();
 }

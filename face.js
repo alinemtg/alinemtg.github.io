@@ -20,6 +20,7 @@ class Face {
     this.fitness = 1; // How good is this face?
     // Using java.awt.Rectangle (see: http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Rectangle.html)
     this.r = new Rectangle(this.x - this.wh / 2, this.y - this.wh / 2, this.wh, this.wh);
+    this.acessorio = 1;
   }
 
   // Display the face
@@ -39,6 +40,7 @@ class Face {
     let mouth_x = map(genes[5], 0, 1, -25, 25);
     let mouthw = map(genes[5], 0, 1, 0, 50);
     let mouthh = map(genes[5], 0, 1, 0, 10);
+    let item = map(genes[5], 0, 1, 0, 10) + 1;
 
     // Once we calculate all the above properties, we use those variables to draw rects, ellipses, etc.
     push();
@@ -74,6 +76,8 @@ class Face {
     if (this.rolloverOn) fill(0);
     else fill(0.25);
     text('' + floor(this.fitness), this.x, this.y + 55);
+  // * itemInfluence(this.acessorio, population.getSeason()
+    // population.getSeason() * this.acessorio
   }
 
   getFitness() {

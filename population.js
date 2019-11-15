@@ -15,6 +15,7 @@ class Population {
     this.population = []; // array to hold the current population
     this.matingPool = [];
     this.generations = 0; // Number of generations
+    this.season = 1;
     for (let i = 0; i < num; i++) {
       this.population[i] = new Face(new DNA(), 50 + i * 75, 60);
     }
@@ -79,15 +80,37 @@ class Population {
     this.generations++;
   }
 
+  /*
+  *  The seasons and respective numbers
+  *  1 - winter
+  *  2 - spring
+  *  3 - summer
+  *  4 - autumn
+  */
+  changeSeason() {
+    let newSeason = this.getSeason() % 4;
+    newSeason++;
+    this.setSeason(newSeason);
+  }
+
   getGenerations() {
     return this.generations;
+  }
+
+  setSeason(newSeason) {
+    return this.season = newSeason;
+  }
+
+  getSeason() {
+    return this.season;
   }
 
   // Find highest fitness for the population
   getMaxFitness() {
     let record = 0;
     for (let i = 0; i < this.population.length; i++) {
-      if (this.population[i].getFitness() > record) {
+      const fitnessValue = this.population[i].getFitness();
+      if (fitnessValue > record) {
         record = this.population[i].getFitness();
       }
     }
