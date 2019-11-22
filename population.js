@@ -1,32 +1,31 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Interactive Selection
-// http://www.genarts.com/karl/papers/siggraph91.html
-
-// A class to describe a population of faces
-// this hasn't changed very much from example to example
-
-// Create the population
 class Population {
   constructor(m, num) {
     this.mutationRate = m; // Mutation rate
     this.population = []; // array to hold the current population
     this.matingPool = [];
     this.generations = 0; // Number of generations
-    this.season = 1;
     for (let i = 0; i < num; i++) {
       this.population[i] = new Face(new DNA(), 50 + i * 75, 60);
     }
   }
 
-  // Display all faces
-  display() {
+
+  // ='='='='='='='='='='='='='='='='='= functions related to fitness ='='='='='='='='='='='='='='='='='=
+
+  // ='='='='='='='='= hour influence ='='='='='='='='=
+
+  setHourInfluence(){
     for (let i = 0; i < this.population.length; i++) {
-      this.population[i].display();
+      this.population[i].getHourInfluence()
+
+    // console.log("o fitness dele ficou assim ó")
+    // console.log(i)
+    // console.log(this.population[i].getFitness())
     }
   }
+
+
+  // ='='='='='='='='= user influence ='='='='='='='='=
 
   // Are we rolling over any of the faces?
   rollover(mx, my) {
@@ -35,8 +34,12 @@ class Population {
     }
   }
 
+
+  // ='='='='='='='='='='='='='='='='='= steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
+
   // Generate a mating pool
   selection() {
+
     // Clear the ArrayList
     this.matingPool = [];
 
@@ -80,37 +83,35 @@ class Population {
     this.generations++;
   }
 
-  /*
-  *  The seasons and respective numbers
-  *  1 - winter
-  *  2 - spring
-  *  3 - summer
-  *  4 - autumn
-  */
-  changeSeason() {
-    let newSeason = this.getSeason() % 4;
-    newSeason++;
-    this.setSeason(newSeason);
+
+  // ='='='='='='='='='='='='='='='='='= display faces of this population ='='='='='='='='='='='='='='='='='=
+  
+  display() {
+    for (let i = 0; i < this.population.length; i++) {
+      this.population[i].display();
+    }
   }
+
+  printBrightness(){
+    for (let i = 0; i < this.population.length; i++) {
+      console.log("o brilho dele era assim ó")
+      console.log(i)
+      console.log(this.population[i].dna.genes[3])
+    }
+  }
+
+
+  // ='='='='='='='='='='='='='='='='='= ''get' methods' ='='='='='='='='='='='='='='='='='=
 
   getGenerations() {
     return this.generations;
-  }
-
-  setSeason(newSeason) {
-    return this.season = newSeason;
-  }
-
-  getSeason() {
-    return this.season;
   }
 
   // Find highest fitness for the population
   getMaxFitness() {
     let record = 0;
     for (let i = 0; i < this.population.length; i++) {
-      const fitnessValue = this.population[i].getFitness();
-      if (fitnessValue > record) {
+      if (this.population[i].getFitness() > record) {
         record = this.population[i].getFitness();
       }
     }

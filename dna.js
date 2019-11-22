@@ -1,16 +1,8 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Interactive Selection
-// http://www.genarts.com/karl/papers/siggraph91.html
-
-//Constructor (makes a random DNA)
 class DNA {
   constructor(newgenes) {
     // DNA is random floating point values between 0 and 1 (!!)
     // The genetic sequence
-    let len = 20; // Arbitrary length
+    let len = 10; // Arbitrary length
     if (newgenes) {
       this.genes = newgenes;
     } else {
@@ -21,8 +13,9 @@ class DNA {
     }
   }
 
-  // Crossover
-  // Creates new DNA sequence from two (this &
+ 
+  // ='='='='='='='='='='='='='='='='='= steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
+
   crossover(partner) {
     let child = new Array(this.genes.length);
     let crossover = floor(random(this.genes.length));

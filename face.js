@@ -1,15 +1,3 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Interactive Selection
-// http://www.genarts.com/karl/papers/siggraph91.html
-
-// The class for our "face", contains DNA sequence, fitness value, position on screen
-
-// Fitness Function f(t) = t (where t is "time" mouse rolls over face)
-
-// Create a new face
 class Face {
   constructor(dna_, x_, y_) {
     this.rolloverOn = false; // Are we rolling over this face?
@@ -18,36 +6,63 @@ class Face {
     this.y = y_;
     this.wh = 70; // Size of square enclosing face
     this.fitness = 1; // How good is this face?
+    
     // Using java.awt.Rectangle (see: http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Rectangle.html)
     this.r = new Rectangle(this.x - this.wh / 2, this.y - this.wh / 2, this.wh, this.wh);
   }
 
-  // Display the face
+
+  // ='='='='='='='='='='='='='='='='='= functions related to fitness ='='='='='='='='='='='='='='='='='=
+
+  
+    // ='='='='='='='='= hour influence ='='='='='='='='=
+
+    getHourInfluence(){
+      let genes = this.dna.genes
+      this.fitness += day.getHourInfluence(genes[2], genes[3])
+    }
+
+    // ='='='='='='='='= user influence ='='='='='='='='=
+
+   // Increment fitness if mouse is rolling over face
+   rollover(mx, my) {
+    if (this.r.contains(mx, my)) {
+      this.rolloverOn = true;
+      this.fitness += 0.25;
+    } else {
+      this.rolloverOn = false;
+    }
+  }
+
+
+  // ='='='='='='='='='='='='='='='='='= display faces of this population ='='='='='='='='='='='='='='='='='=
+
   display() {
     // We are using the face's DNA to pick properties for this face
     // such as: head size, color, eye position, etc.
     // Now, since every gene is a floating point between 0 and 1, we map the values
     let genes = this.dna.genes;
     let r = map(genes[0], 0, 1, 0, 70);
-    let c = color(genes[1], genes[2], genes[3]);
+
+    let mainColor = color(genes[1], genes[2], genes[3]); // genes[3] is the one related to brightness, and genes[2] is the one for saturation
+    let eyecolor = color(genes[4], genes[5], genes[6]);
+    let mouthColor = color(genes[7], genes[8], genes[9]);
+    
     let eye_y = map(genes[4], 0, 1, 0, 5);
     let eye_x = map(genes[5], 0, 1, 0, 10);
     let eye_size = map(genes[5], 0, 1, 0, 10);
-    let eyecolor = color(genes[4], genes[5], genes[6]);
-    let mouthColor = color(genes[7], genes[8], genes[9]);
+   
     let mouth_y = map(genes[5], 0, 1, 0, 25);
     let mouth_x = map(genes[5], 0, 1, -25, 25);
     let mouthw = map(genes[5], 0, 1, 0, 50);
     let mouthh = map(genes[5], 0, 1, 0, 10);
-    let item = floor(map(genes[5], 0, 1, 0, 10));
-    item = (item % 5) + 1;
-    // Once we calculate all the above properties, we use those variables to draw rects, ellipses, etc.
+
     push();
     translate(this.x, this.y);
     noStroke();
 
     // Draw the head
-    fill(c);
+    fill(mainColor);
     ellipseMode(CENTER);
     ellipse(0, 0, r, r);
 
@@ -74,12 +89,11 @@ class Face {
     textAlign(CENTER);
     if (this.rolloverOn) fill(0);
     else fill(0.25);
-    text('' + floor(this.fitness * this.getItemInfluence(item, population.getSeason())), this.x, this.y + 55);
+    text('' + floor(this.fitness), this.x, this.y + 55);
   }
 
-  getItemInfluence(item, season) {
-    return item * season;
-  }
+
+  // ='='='='='='='='='='='='='='='='='= ''get' methods' ='='='='='='='='='='='='='='='='='=
 
   getFitness() {
     return this.fitness;
@@ -89,13 +103,4 @@ class Face {
     return this.dna;
   }
 
-  // Increment fitness if mouse is rolling over face
-  rollover(mx, my) {
-    if (this.r.contains(mx, my)) {
-      this.rolloverOn = true;
-      this.fitness += 0.25;
-    } else {
-      this.rolloverOn = false;
-    }
-  }
 }
