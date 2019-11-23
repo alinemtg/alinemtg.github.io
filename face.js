@@ -73,6 +73,8 @@ class Face {
     rect(-eye_x, -eye_y, eye_size, eye_size);
     rect(eye_x, -eye_y, eye_size, eye_size);
 
+    
+
     // Draw the mouth
     fill(mouthColor);
     rectMode(CENTER);

@@ -12,8 +12,11 @@ let hourInfo;
 
 function preload(){
 
-  layer0 = loadImage('/assets/layer0.png');
-  layer1 = loadImage('./assets/layer1.png');
+  layer0 = loadImage('/assets/layer0.png')
+  layer1 = loadImage('./assets/layer1.png')
+  eyes0 = loadImage('./assets/eyes0.png')
+  eyes1 = loadImage('./assets/eyes1.png')
+  
   
 }
 
