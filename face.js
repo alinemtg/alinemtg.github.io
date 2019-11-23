@@ -12,7 +12,7 @@ class Face {
   }
 
 
-  // ='='='='='='='='='='='='='='='='='= functions related to fitness ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= methods related to fitness ='='='='='='='='='='='='='='='='='=
 
   
     // ='='='='='='='='= hour influence ='='='='='='='='=
@@ -42,7 +42,7 @@ class Face {
     // such as: head size, color, eye position, etc.
     // Now, since every gene is a floating point between 0 and 1, we map the values
     let genes = this.dna.genes;
-    let r = map(genes[0], 0, 1, 0, 70);
+    let headSize = map(genes[0], 0, 1, 50, 70);
 
     let mainColor = color(genes[1], genes[2], genes[3]); // genes[3] is the one related to brightness, and genes[2] is the one for saturation
     let eyecolor = color(genes[4], genes[5], genes[6]);
@@ -62,9 +62,10 @@ class Face {
     noStroke();
 
     // Draw the head
-    fill(mainColor);
-    ellipseMode(CENTER);
-    ellipse(0, 0, r, r);
+    tint(mainColor)
+    image(layer0, 0-this.wh/2, 0-this.wh/2, headSize, headSize)
+    tint(255)
+    image(layer1, 0-this.wh/2, 0-this.wh/2, headSize, headSize)
 
     // Draw the eyes
     fill(eyecolor);

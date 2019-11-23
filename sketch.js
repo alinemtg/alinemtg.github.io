@@ -10,7 +10,15 @@ let population;
 let generationInfo;
 let hourInfo;
 
+function preload(){
+
+  layer0 = loadImage('/assets/layer0.png');
+  layer1 = loadImage('./assets/layer1.png');
+  
+}
+
 function setup() {
+
   createCanvas(800, 124);
   colorMode(HSB, 1.0, 1.0, 1.0, 1.0);
   
@@ -25,8 +33,7 @@ function setup() {
   generationInfo = createDiv('');
   generationInfo.position(10, 175);
   hourInfo = createDiv('')
-  hourInfo.position(10, 200)
-  
+  hourInfo.position(10, 200)  
 }
 
 function draw() {

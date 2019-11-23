@@ -35,7 +35,7 @@ class Population {
   }
 
 
-  // ='='='='='='='='='='='='='='='='='= steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= other steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
 
   // Generate a mating pool
   selection() {
