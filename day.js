@@ -13,7 +13,7 @@ class Day {
         } else {
             this.hour += 1;
             if (this.hour == 24){
-                this.hour = 12;
+                this.hour = 0;
             }
         }
     }
