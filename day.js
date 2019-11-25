@@ -1,14 +1,20 @@
 class Day {
     constructor(hour) {
-     this.hour = 18;
+        var today = new Date();
+        this.hour = today.getHours();
     }
 
-    // ='='='='='='='='='='='='='='='='='= time is passing ... ='='='='='='='='='='='='='='='='='=    
+    // ='='='='='='='='='='='='='='='='='= time is passing ... ='='='='='='='='='='='='='='='='='=
 
-    passHour (){
-        this.hour += 1;
-        if (this.hour == 24){
-            this.hour = 12;
+    passHour (isRealTime){
+        if(isRealTime) {
+            var today = new Date();
+            this.hour = today.getHours();
+        } else {
+            this.hour += 1;
+            if (this.hour == 24){
+                this.hour = 12;
+            }
         }
     }
 
@@ -52,7 +58,6 @@ class Day {
                 influence = 0.9
             }
         }
-
         return influence
     }
 

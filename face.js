@@ -6,7 +6,7 @@ class Face {
     this.y = y_;
     this.wh = 70; // Size of square enclosing face
     this.fitness = 1; // How good is this face?
-    
+
     // Using java.awt.Rectangle (see: http://java.sun.com/j2se/1.4.2/docs/api/java/awt/Rectangle.html)
     this.r = new Rectangle(this.x - this.wh / 2, this.y - this.wh / 2, this.wh, this.wh);
   }
@@ -14,12 +14,12 @@ class Face {
 
   // ='='='='='='='='='='='='='='='='='= methods related to fitness ='='='='='='='='='='='='='='='='='=
 
-  
+
     // ='='='='='='='='= hour influence ='='='='='='='='=
 
     getHourInfluence(){
-      let genes = this.dna.genes
-      this.fitness += day.getHourInfluence(genes[2], genes[3])
+      let genes = this.dna.genes;
+      this.fitness += day.getHourInfluence(genes[2], genes[3]);
     }
 
     // ='='='='='='='='= user influence ='='='='='='='='=
@@ -47,11 +47,11 @@ class Face {
     let mainColor = color(genes[1], genes[2], genes[3]); // genes[3] is the one related to brightness, and genes[2] is the one for saturation
     let eyecolor = color(genes[4], genes[5], genes[6]);
     let mouthColor = color(genes[7], genes[8], genes[9]);
-    
+
     let eye_y = map(genes[4], 0, 1, 0, 5);
     let eye_x = map(genes[5], 0, 1, 0, 10);
     let eye_size = map(genes[5], 0, 1, 0, 10);
-   
+
     let mouth_y = map(genes[5], 0, 1, 0, 25);
     let mouth_x = map(genes[5], 0, 1, -25, 25);
     let mouthw = map(genes[5], 0, 1, 0, 50);
@@ -73,7 +73,7 @@ class Face {
     rect(-eye_x, -eye_y, eye_size, eye_size);
     rect(eye_x, -eye_y, eye_size, eye_size);
 
-    
+
 
     // Draw the mouth
     fill(mouthColor);
