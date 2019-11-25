@@ -4,8 +4,9 @@ class Population {
     this.population = []; // array to hold the current population
     this.matingPool = [];
     this.generations = 0; // Number of generations
+    
     for (let i = 0; i < num; i++) {
-      this.population[i] = new Face(new DNA(), 50 + i * 75, 60);
+      this.population[i] = new Face(new DNA(), i)
     }
   }
 
