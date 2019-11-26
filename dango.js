@@ -61,16 +61,17 @@ class Dango {
     let body_h = f_body.height*body_scale
     
     // ~ adjusting the randomly generated coordinates (we want a full dango on screen) ~
-
+    // canvas borders
     if(this.x + body_w > windowWidth){
       this.x -= body_w
     }
     if(this.y + body_h > 0.83*windowHeight){
       this.y -= body_h
     }
-    if(this.x<0.05+250 && this.y<0.01*windowHeight+38+38){
-      this.x -= body_w
-      this.y -= body_h
+    // beside bottons
+    if(this.x<0.05+250 && this.y<0.015*windowHeight+38+45){
+      this.x += body_w
+      this.y += body_h
     }
 
 

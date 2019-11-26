@@ -45,20 +45,20 @@ function setup() {
   canvas = createCanvas(windowWidth, 0.92*windowHeight)
   canvas.position(0, 0)
 
+
   // ='='='='='='='='= INFOS ='='='='='='='='=
 
   generationInfo = createDiv('')
   generationInfo.position(0, 0.94*windowHeight)
   generationInfo.style('font-family', 'Bebas-Regular')
   generationInfo.style('font-size', '20px')
-  generationInfo.center('horizontal')
 
 
   // ='='='='='='='='= BUTTONS  ='='='='='='='='=
 
   button1 = createButton("✧ evolve new generation").size(250, 35)
   button1.mousePressed(nextGen)
-  button1.position(0.05, 0.01*windowHeight)
+  button1.position(0.05, 0.015*windowHeight)
   button1.style('background-color', '#47cec0')
   button1.style( 'border-bottom', '3px solid #3c988f')
   button1.style('text-align', 'center')
@@ -67,13 +67,20 @@ function setup() {
 
   button2 = createButton("✧ same but with real time").size(250, 35)
   button2.mousePressed(nextGenRealTime)
-  button2.position(0.05, 0.01*windowHeight+38)
+  button2.position(0.05, 0.01*windowHeight+45)
   button2.style('background-color', '#47cec0')
   button2.style( 'border-bottom', '3px solid #3c988f')
   button2.style('text-align', 'center')
   button2.style('font-size', '20px')
   button2.style('font-family', 'Bebas-Regular')
   
+}
+
+// ='='='='='='='='='='='='='='='='='= CLICK EVENT ='='='='='='='='='='='='='='='='='=
+
+function mouseClicked() {
+  population.rollover(mouseX, mouseY)
+  return (false)
 }
 
 
@@ -86,18 +93,13 @@ function draw() {
   // ='='='='='='='='= HTML ELEMENTS ='='='='='='='='=
 
   generationInfo.html("Generation ➮ " + population.getGenerations() + "  ||  Hour ➮ " + day.getHour()) 
+  generationInfo.center('horizontal')
 }
 
 
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
-// ='='='='='='='='='='='='='='='='='= CLICK EVENT ='='='='='='='='='='='='='='='='='=
-
-function mouseClicked() {
-  population.rollover(mouseX, mouseY)
-  return (false)
-}
 
 
 // ='='='='='='='='='='='='='='='='='= RESPONSE TO HTML ELEMENTS ='='='='='='='='='='='='='='='='='=
