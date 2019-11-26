@@ -37,8 +37,8 @@ function preload(){
 function setup() {
 
   colorMode(HSB, 1.0, 1.0, 1.0, 1.0)
-  let popmax = 20
-  let mutationRate = 0.05 // a pretty high mutation rate here, our population is rather small we need to enforce variety
+  let popmax = 25
+  let mutationRate = 0.03
   population = new Population(mutationRate, popmax)
   day = new Day(0)
 

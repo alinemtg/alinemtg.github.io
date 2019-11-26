@@ -48,9 +48,9 @@ class Dango {
     let eyecolor = color(genes[4], genes[5], genes[6])
     let cheeksColor = color(genes[7], genes[8], genes[9])
     
-    let body_scale = map(genes[0], 0, 1, 0.1, 0.8)
-    let eye_scale = map(genes[5], 0, 1, 0.2*body_scale, 0.95*body_scale)
-    let cheeks_scale = map(genes[5], 0, 1, 0.1, 0.95*body_scale)
+    let body_scale = map(genes[0], 0, 1, 0.1, 0.75)
+    let eye_scale = map(genes[10], 0, 1, 0.2*body_scale, 0.95*body_scale)
+    let cheeks_scale = map(genes[10], 0, 1, 0.1, 0.95*body_scale)
     
 
     // ~ now we start drawing! ~
@@ -66,6 +66,10 @@ class Dango {
       this.x -= body_w
     }
     if(this.y + body_h > 0.83*windowHeight){
+      this.y -= body_h
+    }
+    if(this.x<0.05+250 && this.y<0.01*windowHeight+38+38){
+      this.x -= body_w
       this.y -= body_h
     }
 
@@ -93,7 +97,7 @@ class Dango {
     image(f_cheeks, this.x+body_w/2, this.y+(2*body_h/4), f_cheeks.width*cheeks_scale, f_cheeks.height*cheeks_scale)
     tint (255)
     image(s_cheeks0, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*cheeks_scale, s_cheeks0.height*cheeks_scale)
-    
+   
 
     // ='='='='='='='='= DISPLAY_THIS.COLORBOX ='='='='='='='='=
 
@@ -103,8 +107,11 @@ class Dango {
     pop()
 
     // ='='='='='='='='= DISPLAY_THIS.FITNESS_VALUE ='='='='='='='='=
-    textAlign(CENTER);
-    text('' + floor(this.fitness), this.index*windowWidth/20 + 0.5*windowWidth/20, 0.9*windowHeight);
+
+    textAlign(CENTER)
+    textFont('Bebas-Regular')
+    text('' + floor(this.fitness), this.index*windowWidth/20 + 0.5*windowWidth/20, 0.9*windowHeight)
+    
   }
 
 

@@ -77,7 +77,7 @@ class Population {
       // Mutate their genes
       child.mutate(this.mutationRate);
       // Fill the new population with the new child
-      this.population[i] = new dango(child, 50 + i * 75, 60);
+      this.population[i] = new Dango(child, i);
     }
     this.generations++;
   }
