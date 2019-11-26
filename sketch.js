@@ -1,14 +1,22 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
+/*
+The base for this project: https://github.com/nature-of-code/noc-examples-p5.js/tree/master/chp09_ga/NOC_9_04_Faces_interactiveselection
+Daniel Shiffman || The Nature of Code || http://natureofcode.com
 
-// Interactive Selection
-// http://www.genarts.com/karl/papers/siggraph91.html
+                  ˚ 　•    ×
+Dango Generator  ·　　　 ·　　  ˚ . ·
+ by amtg and iafp ·   ✹  ˚  ·. ·  ·   . 
+*              •                 *   
+*/
 
-let day;
-let population;
-let generationInfo;
-let hourInfo;
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+let day 
+let population 
+let generationInfo 
+
+// for mouse events functions
+let locked = false
 
 
 // ='='='='='='='='='='='='='='='='='= - - - SETUP- - - ='='='='='='='='='='='='='='='='='=
@@ -22,95 +30,106 @@ function preload(){
   f_cheeks = loadImage('/assets/f_cheeks.png')
   f_eyes0 = loadImage('/assets/f_eyes0.png')
 
+  loadFont('./assets/bebas/Bebas-Regular.otf')
+
 }
 
 function setup() {
 
-  createCanvas(windowWidth, 0.9*windowHeight)
-
   colorMode(HSB, 1.0, 1.0, 1.0, 1.0)
-
-  let popmax = 20;
-  let mutationRate = 0.05; // A pretty high mutation rate here, our population is rather small we need to enforce variety
-  population = new Population(mutationRate, popmax);
+  let popmax = 20
+  let mutationRate = 0.05 // a pretty high mutation rate here, our population is rather small we need to enforce variety
+  population = new Population(mutationRate, popmax)
   day = new Day(0)
 
+  createCanvas(windowWidth, 0.92*windowHeight)
 
-  // ='='='='='='='='= COLOR PALETTE  ='='='='='='='='=
-
-  // colorPalette = createDiv('')
-  // colorPalette.position(300, 0.85*windowHeight)
 
   // ='='='='='='='='= INFOS ='='='='='='='='=
 
   generationInfo = createDiv('')
-  generationInfo.position(10, 0.9*windowHeight);
-  hourInfo = createDiv('')
-  hourInfo.position(300, 0.9*windowHeight);
+  generationInfo.position(windowWidth/2, 0.94*windowHeight)
+  generationInfo.style('font-family', 'Bebas-Regular')
+  generationInfo.style('font-size', '20px')
+  generationInfo.center('horizontal')
 
 
   // ='='='='='='='='= BUTTONS  ='='='='='='='='=
 
-  button1 = createButton("evolve new generation")
+  button1 = createButton("✧ evolve new generation").size(250, 35)
   button1.mousePressed(nextGen)
-  button1.position(10, 0.95*windowHeight)
+  button1.position(0.05, 0.01*windowHeight)
+  button1.style('background-color', '#47cec0')
+  button1.style( 'border-bottom', '3px solid #3c988f')
+  button1.style('text-align', 'center')
+  button1.style('font-size', '20px')
+  button1.style('font-family', 'Bebas-Regular')
 
-  button2 = createButton("evolve new generation with real time")
+  button2 = createButton("✧ same but with real time").size(250, 35)
   button2.mousePressed(nextGenRealTime)
-  button2.position(300, 0.95*windowHeight)
+  button2.position(0.05, 0.01*windowHeight+38)
+  button2.style('background-color', '#47cec0')
+  button2.style( 'border-bottom', '3px solid #3c988f')
+  button2.style('text-align', 'center')
+  button2.style('font-size', '20px')
+  button2.style('font-family', 'Bebas-Regular')
   
 }
+
 
 // ='='='='='='='='='='='='='='='='='= - - - EXECUTION - - - ='='='='='='='='='='='='='='='='='=
 
 function draw() {
-  background('#E6E6FA');
-  population.display();
+  background('#E6E6FA')
+  population.display()
 
   // ='='='='='='='='= HTML ELEMENTS ='='='='='='='='=
 
-  generationInfo.html("Generation #:" + population.getGenerations());
-  //generationInfo.position(10, 0.9*windowHeight);
-
-  hourInfo.html("Hour#:" + day.getHour());
-  // hourInfo.position(300, 0.9*windowHeight);
-
+  generationInfo.html("Generation ➮ " + population.getGenerations() + "  ||  Hour ➮ " + day.getHour()) 
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, 0.85*windowHeight)
 
-  population.display();
-  
-  button1.position(10, 0.95*windowHeight)
-  button2.position(300, 0.95*windowHeight);
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
-  generationInfo.position(10, 0.9*windowHeight);
-  hourInfo.position(300, 0.9*windowHeight);
-}
 
 // ='='='='='='='='='='='='='='='='='= CLICK EVENT ='='='='='='='='='='='='='='='='='=
 
 function mouseClicked() {
   population.rollover(mouseX, mouseY)
+  return (false)
 }
 
 
 // ='='='='='='='='='='='='='='='='='= RESPONSE TO HTML ELEMENTS ='='='='='='='='='='='='='='='='='=
 
-  function nextGen() {
-    var isRealTime = false
-    population.setHourInfluence(); // before selection, the fitness influenced by hour has to be updated!
-    population.selection();
-   // population.printBrightness()
-    population.reproduction();
-    day.passHour(isRealTime);
-  }
+function nextGen() {
+  var isRealTime = false
+  population.setHourInfluence()  // before selection, the fitness influenced by hour has to be updated!
+  population.selection() 
+  // population.printBrightness()
+  population.reproduction() 
+  day.passHour(isRealTime) 
+}
   
-  function nextGenRealTime() {
-    var isRealTime = true
-    population.setHourInfluence(); // before selection, the fitness influenced by hour has to be updated!
-    population.selection();
-    population.reproduction();
-    day.passHour(isRealTime);
-  }
+function nextGenRealTime() {
+  var isRealTime = true
+  population.setHourInfluence()  // before selection, the fitness influenced by hour has to be updated!
+  population.selection() 
+  population.reproduction() 
+  day.passHour(isRealTime) 
+}
+
+
+// = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+// ='='='='='='='='='='='='='='='='='= DEALING WITH WINDOW RESIZED ='='='='='='='='='='='='='='='='='=
+
+function windowResized() {
+  clear()
+  resizeCanvas(windowWidth, 0.92*windowHeight)
+  population.display()
+
+  generationInfo.position(windowWidth/2, 0.94*windowHeight)
+  generationInfo.center('horizontal')
+}

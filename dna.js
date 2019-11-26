@@ -1,3 +1,4 @@
+
 class DNA {
   constructor(newgenes) {
     // DNA is random floating point values between 0 and 1 (!!)
@@ -14,7 +15,7 @@ class DNA {
   }
 
  
-  // ='='='='='='='='='='='='='='='='='= steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= STEPS OF THE GENETIC ALGORITHM  ='='='='='='='='='='='='='='='='='=
 
   crossover(partner) {
     let child = new Array(this.genes.length);

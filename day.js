@@ -1,10 +1,11 @@
+
 class Day {
     constructor(hour) {
         var today = new Date();
         this.hour = today.getHours();
     }
 
-    // ='='='='='='='='='='='='='='='='='= time is passing ... ='='='='='='='='='='='='='='='='='=
+    // ='='='='='='='='='='='='='='='='='= TIME IS PASSING ... ='='='='='='='='='='='='='='='='='=
 
     passHour (isRealTime){
         if(isRealTime) {
@@ -18,7 +19,8 @@ class Day {
         }
     }
 
-    // ='='='='='='='='='='='='='='='='='= methods related to fitness ='='='='='='='='='='='='='='='='='=
+    
+  // ='='='='='='='='='='='='='='='='='= CHANGING FITNESS ='='='='='='='='='='='='='='='='='=
 
     getHourInfluence(saturation, brightness){
         var influence = 0
@@ -61,7 +63,8 @@ class Day {
         return influence
     }
 
-    // ='='='='='='='='='='='='='='='='='= ''get' methods' ='='='='='='='='='='='='='='='='='=
+
+  // ='='='='='='='='='='='='='='='='='= 'GET' METHODS ='='='='='='='='='='='='='='='='='=
 
     getHour() {
         return this.hour;

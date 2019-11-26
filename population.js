@@ -1,3 +1,4 @@
+
 class Population {
   constructor(m, num) {
     this.mutationRate = m; // Mutation rate
@@ -6,14 +7,14 @@ class Population {
     this.generations = 0; // Number of generations
     
     for (let i = 0; i < num; i++) {
-      this.population[i] = new Face(new DNA(), i)
+      this.population[i] = new Dango(new DNA(), i)
     }
   }
 
 
-  // ='='='='='='='='='='='='='='='='='= functions related to fitness ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= CHANGING FITNESS ='='='='='='='='='='='='='='='='='=
 
-  // ='='='='='='='='= hour influence ='='='='='='='='=
+  // ='='='='='='='='= HOUR INFLUENCE ='='='='='='='='=
 
   setHourInfluence(){
     for (let i = 0; i < this.population.length; i++) {
@@ -25,10 +26,7 @@ class Population {
     }
   }
 
-
-  // ='='='='='='='='= user influence ='='='='='='='='=
-
-  // Are we rolling over any of the faces?
+  // ='='='='='='='='= USER INFLUENCE ='='='='='='='='=
   rollover(mx, my) {
     for (let i = 0; i < this.population.length; i++) {
       this.population[i].rollover(mx, my);
@@ -36,7 +34,7 @@ class Population {
   }
 
 
-  // ='='='='='='='='='='='='='='='='='= other steps of genetic algorithm ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= THE OTHER STEPS OF THE GENETIC ALGORITHM ='='='='='='='='='='='='='='='='='=
 
   // Generate a mating pool
   selection() {
@@ -79,13 +77,13 @@ class Population {
       // Mutate their genes
       child.mutate(this.mutationRate);
       // Fill the new population with the new child
-      this.population[i] = new Face(child, 50 + i * 75, 60);
+      this.population[i] = new dango(child, 50 + i * 75, 60);
     }
     this.generations++;
   }
 
 
-  // ='='='='='='='='='='='='='='='='='= display faces of this population ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= DISPLAYING DANGOS OF THIS POPULATION ='='='='='='='='='='='='='='='='='=
   
   display() {
     for (let i = 0; i < this.population.length; i++) {
@@ -93,16 +91,11 @@ class Population {
     }
   }
 
-  printBrightness(){
-    for (let i = 0; i < this.population.length; i++) {
-      console.log("o brilho dele era assim ó")
-      console.log(i)
-      console.log(this.population[i].dna.genes[3])
-    }
-  }
+
+  // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
-  // ='='='='='='='='='='='='='='='='='= ''get' methods' ='='='='='='='='='='='='='='='='='=
+  // ='='='='='='='='='='='='='='='='='= 'GET' METHODS ='='='='='='='='='='='='='='='='='=
 
   getGenerations() {
     return this.generations;
@@ -118,4 +111,15 @@ class Population {
     }
     return record;
   }
+
+
+  // just for checkouts (it'll die soon...)
+  printBrightness(){
+    for (let i = 0; i < this.population.length; i++) {
+      console.log("o brilho dele era assim ó")
+      console.log(i)
+      console.log(this.population[i].dna.genes[3])
+    }
+  }
+
 }
