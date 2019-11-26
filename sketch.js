@@ -42,13 +42,13 @@ function setup() {
   population = new Population(mutationRate, popmax)
   day = new Day(0)
 
-  createCanvas(windowWidth, 0.92*windowHeight)
-
+  canvas = createCanvas(windowWidth, 0.92*windowHeight)
+  canvas.position(0, 0)
 
   // ='='='='='='='='= INFOS ='='='='='='='='=
 
   generationInfo = createDiv('')
-  generationInfo.position(windowWidth/2, 0.94*windowHeight)
+  generationInfo.position(0, 0.94*windowHeight)
   generationInfo.style('font-family', 'Bebas-Regular')
   generationInfo.style('font-size', '20px')
   generationInfo.center('horizontal')
