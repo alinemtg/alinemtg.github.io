@@ -8,7 +8,7 @@ class DNA {
       this.genes = newgenes;
     } else {
       this.genes = new Array(len);
-      for (let i = 0; i < this.genes.length; i++) {
+      for (let i = 0; i < len; i++) {
         this.genes[i] = random(0, 1);
       }
     }
@@ -28,7 +28,7 @@ class DNA {
     return newgenes;
   }
 
-  // Based on a mutation probability, picks a new random character in array spots
+  // ~ based on a mutation probability, picks a new random character in array spots ~
   mutate(m) {
     for (let i = 0; i < this.genes.length; i++) {
       if (random(1) < m) {

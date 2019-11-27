@@ -27,14 +27,18 @@ function preload(){
   s_body = loadImage('/assets/s_body.png')
   f_cheeks = loadImage('/assets/f_cheeks.png')
   s_cheeks0 = loadImage('/assets/s_cheeks0.png')
-  f_cheeks = loadImage('/assets/f_cheeks.png')
+  s_cheeks1 = loadImage('/assets/s_cheeks1.png')
   f_eyes0 = loadImage('/assets/f_eyes0.png')
+  f_eyes1 = loadImage('/assets/f_eyes0.png') // change assets!!
+  f_eyes2 = loadImage('/assets/f_eyes0.png')
 
   loadFont('./assets/bebas/Bebas-Regular.otf')
 
 }
 
 function setup() {
+
+  frameRate(30)
 
   colorMode(HSB, 1.0, 1.0, 1.0, 1.0)
   let popmax = 25
@@ -76,11 +80,17 @@ function setup() {
   
 }
 
-// ='='='='='='='='='='='='='='='='='= CLICK EVENT ='='='='='='='='='='='='='='='='='=
 
-function mouseClicked() {
+// ='='='='='='='='='='='='='='='='='= CLICK EVENTS ='='='='='='='='='='='='='='='='='=
+
+function mousePressed() {
   population.rollover(mouseX, mouseY)
-  return (false)
+  locked = true
+}
+
+function mouseReleased() {
+  population.rollover(mouseX, mouseY)
+  locked = false
 }
 
 
@@ -89,6 +99,9 @@ function mouseClicked() {
 function draw() {
   background('#E6E6FA')
   population.display()
+  if (locked){
+    population.rollover(mouseX, mouseY)
+  }
 
   // ='='='='='='='='= HTML ELEMENTS ='='='='='='='='=
 

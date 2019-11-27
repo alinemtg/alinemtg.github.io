@@ -5,7 +5,8 @@ class Day {
         this.hour = today.getHours();
     }
 
-    // ='='='='='='='='='='='='='='='='='= TIME IS PASSING ... ='='='='='='='='='='='='='='='='='=
+
+  // ='='='='='='='='='='='='='='='='='= TIME IS PASSING ... ='='='='='='='='='='='='='='='='='=
 
     passHour (isRealTime){
         if(isRealTime) {
@@ -22,10 +23,11 @@ class Day {
     
   // ='='='='='='='='='='='='='='='='='= CHANGING FITNESS ='='='='='='='='='='='='='='='='='=
 
-    getHourInfluence(saturation, brightness){
+    getHourInfluence(brightness, eyes_type, cheeks_type){
         var influence = 0
 
-        // ='='='='='='='='= A.M. ='='='='='='='='=
+    // ='='='='='='='='= A.M. ='='='='='='='='=
+
         if (this.hour>=5 && this.hour<10){
             if (brightness>=0.3){
                 influence = 1.25
@@ -39,7 +41,10 @@ class Day {
                 influence = 0.50
             }
         }
-        // ='='='='='='='='= P.M. ='='='='='='='='=
+
+
+    // ='='='='='='='='= P.M. ='='='='='='='='=
+
           else if (this.hour>=15 && this.hour<19) {
             if(brightness<0.4){
                 influence = 1.5
