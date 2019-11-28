@@ -18,14 +18,14 @@ class Dango {
     this.eye_scale = map(this.dna.genes[10], 0, 1, 0.35*this.body_scale, 0.95*this.body_scale)
     this.cheeks_scale = map(this.dna.genes[11], 0, 1, 0.35*this.body_scale, 0.95*this.body_scale)
 
-    this.eyes_type = floor(map(this.dna.genes[12], 0, 1, 0, 3))
-    this.cheeks_type = floor(map(this.dna.genes[13], 0, 1, 0, 2))
+    this.eyes_type = Math.floor(map(this.dna.genes[12], 0, 1, 0, 3))
+    this.cheeks_type = Math.floor(map(this.dna.genes[13], 0, 1, 0, 2))
 
     this.body_w = f_body.width*this.body_scale
     this.body_h = f_body.height*this.body_scale
 
-    this.x = random(0.95*windowWidth-this.body_w)
-    this.y = random(0.8*(windowHeight-this.body_h))
+    this.x = Math.random()*(0.95*windowWidth-this.body_w)+0.03*windowWidth
+    this.y = Math.random()*(0.8*(windowHeight-this.body_h))
   }
 
 
@@ -43,13 +43,18 @@ class Dango {
 
   rollover(mx, my) {
     if (this.colorBox.contains(mx, my)) {
-      this.rolloverOn = true;
-      this.fitness += 0.25;
-    } else {
-      this.rolloverOn = false;
+      this.shake()
+      this.fitness += 0.25
     }
   }
 
+  shake(){
+    for (let i=0; i<16; i++){
+    this.x += Math.random()*(2-(-2))+(-2)
+    this.y += Math.random()*(2-(-2))+(-2)
+    }
+  }
+  
 
   // ='='='='='='='='='='='='='='='='='= DRAW THE COMPONENTS OF THIS DANGO (~ which are determined by this.genes ~) ='='='='='='='='='='='='='='='='='=
 
@@ -57,7 +62,7 @@ class Dango {
   // ='='='='='='='='= THE DANGO ITSELF ='='='='='='='='=
 
   display() {
-    
+   
     push()
            
     // ='='='='='= DISPLAY_BODY ='='='='='=

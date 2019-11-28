@@ -15,11 +15,9 @@ let day
 let population 
 let generationInfo 
 
-// for mouse events functions
-let locked = false
-
 
 // ='='='='='='='='='='='='='='='='='= - - - SETUP- - - ='='='='='='='='='='='='='='='='='=
+p5.disableFriendlyErrors = true; // disables FES
 
 function preload(){
 
@@ -48,10 +46,10 @@ function preload(){
 
 function setup() {
 
-  frameRate(30)
+  frameRate(100)
 
   colorMode(HSB, 1.0, 1.0, 1.0, 1.0)
-  let popmax = 25
+  let popmax = 20
   let mutationRate = 0.03
   population = new Population(mutationRate, popmax)
   day = new Day(0)
@@ -97,9 +95,7 @@ function draw() {
   background('#E6E6FA')
   population.adjustCoordinates()
   population.display()
-  if (locked){
-    population.rollover(mouseX, mouseY)
-  }
+  population.rollover(mouseX, mouseY)
 
 
   // ='='='='='='='='= HTML ELEMENTS ='='='='='='='='=
@@ -116,12 +112,10 @@ function draw() {
 
 function mousePressed() {
   population.rollover(mouseX, mouseY)
-  locked = true
 }
 
 function mouseReleased() {
   population.rollover(mouseX, mouseY)
-  locked = false
 }
 
 
