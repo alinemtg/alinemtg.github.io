@@ -2,9 +2,9 @@
 class Dango {
   constructor(dna_, index_) {
     this.rolloverOn = false
-    this.dna = dna_; // dango's DNA
+    this.dna = dna_ // dango's DNA
     this.index = index_
-    this.fitness = 1; // How good is this dango?
+    this.fitness = 1 // How good is this dango?
 
     this.colorBox = new Rectangle(this.index*windowWidth/20, 0.87*windowHeight,  windowWidth/20, 0.045*windowHeight);
 
@@ -14,18 +14,18 @@ class Dango {
     this.eyecolor = color(this.dna.genes[4], this.dna.genes[5], this.dna.genes[6])
     this.cheeksColor = color(this.dna.genes[7], this.dna.genes[8], this.dna.genes[9])
     
-    this.body_scale = map(this.dna.genes[0], 0, 1, 0.15, 0.75)
+    this.body_scale = map(this.dna.genes[0], 0, 1, 0.15, 0.70)
     this.eye_scale = map(this.dna.genes[10], 0, 1, 0.35*this.body_scale, 0.95*this.body_scale)
-    this.cheeks_scale = map(this.dna.genes[10], 0, 1, 0.35*this.body_scale, 0.95*this.body_scale)
+    this.cheeks_scale = map(this.dna.genes[11], 0, 1, 0.35*this.body_scale, 0.95*this.body_scale)
 
-    this.eyes_type = floor(map(this.dna.genes[11], 0, 1, 0, 3))
-    this.cheeks_type = floor(map(this.dna.genes[12], 0, 1, 0, 2))
+    this.eyes_type = floor(map(this.dna.genes[12], 0, 1, 0, 3))
+    this.cheeks_type = floor(map(this.dna.genes[13], 0, 1, 0, 2))
 
     this.body_w = f_body.width*this.body_scale
     this.body_h = f_body.height*this.body_scale
 
     this.x = random(0.95*windowWidth-this.body_w)
-    this.y = random(0.8*windowHeight-this.body_h)
+    this.y = random(0.58*windowHeight-this.body_h)
   }
 
 
@@ -82,7 +82,7 @@ class Dango {
       }
     }
 
-    
+
     // ~~ for eyes and cheeks : 
     let eyes_cheeks_x = this.x+this.body_w/2
     let eyes_cheeks_y =  this.y+this.body_h/4
@@ -135,11 +135,10 @@ class Dango {
     }
 
     else{
+      tint (this.cheeksColor)
       if (this.body_scale>0.3){
-        tint (this.cheeksColor)
         image(s_cheeks1, eyes_cheeks_x, this.y+(2*this.body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
       }else{
-        tint (this.cheeksColor)
         image(s_cheeks1_s, eyes_cheeks_x, this.y+(2*this.body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
       }
     }
@@ -167,7 +166,7 @@ class Dango {
   // ='='='='='='='='='='='='='='='='='= ADJUSTING COORDINATES (we want a full dango on screen) ='='='='='='='='='='='='='='='='='=
 
   adjustCoordinates(){   
-    
+
     // beside bottons
     if(this.x<0.05+250 && this.y<0.015*windowHeight+38+45){
       this.x += this.body_w
