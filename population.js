@@ -87,13 +87,21 @@ class Population {
   
   display() {
     for (let i = 0; i < this.population.length; i++) {
-      this.population[i].display();
+      this.population[i].display()
     }
   }
 
 
   // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
+
+  // ='='='='='='='='='='='='='='='='='= ADJUSTING COORDINATES (we want a full dango on screen) ='='='='='='='='='='='='='='='='='=
+
+  adjustCoordinates(){   
+    for (let i = 0; i < this.population.length; i++) {
+      this.population[i].adjustCoordinates()
+    }
+  }
 
   // ='='='='='='='='='='='='='='='='='= 'GET' METHODS ='='='='='='='='='='='='='='='='='=
 

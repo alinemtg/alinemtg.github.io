@@ -34,6 +34,7 @@ function preload(){
 
   f_body_s = loadImage('/assets/f_body_s.png')
   s_body_s = loadImage('/assets/s_body_s.png')
+  s_body_ss = loadImage('/assets/s_body_s.png')
   f_cheeks_s = loadImage('/assets/f_cheeks_s.png')
   s_cheeks0_s = loadImage('/assets/s_cheeks0_s.png')
   s_cheeks1_s = loadImage('/assets/s_cheeks1_s.png')
@@ -90,27 +91,16 @@ function setup() {
 }
 
 
-// ='='='='='='='='='='='='='='='='='= CLICK EVENTS ='='='='='='='='='='='='='='='='='=
-
-function mousePressed() {
-  population.rollover(mouseX, mouseY)
-  locked = true
-}
-
-function mouseReleased() {
-  population.rollover(mouseX, mouseY)
-  locked = false
-}
-
-
 // ='='='='='='='='='='='='='='='='='= - - - EXECUTION - - - ='='='='='='='='='='='='='='='='='=
 
 function draw() {
   background('#E6E6FA')
+  population.adjustCoordinates()
   population.display()
   if (locked){
     population.rollover(mouseX, mouseY)
   }
+
 
   // ='='='='='='='='= HTML ELEMENTS ='='='='='='='='=
 
@@ -122,6 +112,17 @@ function draw() {
 // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
+// ='='='='='='='='='='='='='='='='='= CLICK EVENTS ='='='='='='='='='='='='='='='='='=
+
+function mousePressed() {
+  population.rollover(mouseX, mouseY)
+  locked = true
+}
+
+function mouseReleased() {
+  population.rollover(mouseX, mouseY)
+  locked = false
+}
 
 
 // ='='='='='='='='='='='='='='='='='= RESPONSE TO HTML ELEMENTS ='='='='='='='='='='='='='='='='='=
@@ -152,6 +153,7 @@ function nextGenRealTime() {
 function windowResized() {
   clear()
   resizeCanvas(windowWidth, 0.92*windowHeight)
+  population.adjustCoordinates()
   population.display()
 
   generationInfo.position(windowWidth/2, 0.94*windowHeight)
