@@ -25,7 +25,7 @@ class Dango {
     this.body_h = f_body.height*this.body_scale
 
     this.x = random(0.95*windowWidth-this.body_w)
-    this.y = random(0.58*windowHeight-this.body_h)
+    this.y = random(0.8*(windowHeight-this.body_h))
   }
 
 

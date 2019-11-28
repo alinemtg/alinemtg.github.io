@@ -18,26 +18,15 @@ class Population {
 
   setHourInfluence(){
     this.population.forEach(dango => {
-      dango.getHourInfluence();
-    });
-
-    // for (let i = 0; i < this.population.length; i++) {
-    //   this.population[i].getHourInfluence()
-
-    // console.log("o fitness dele ficou assim ó")
-    // console.log(i)
-    // console.log(this.population[i].getFitness())
-    // }
+      dango.getHourInfluence()
+    })
   }
 
   // ='='='='='='='='= USER INFLUENCE ='='='='='='='='=
   rollover(mx, my) {
     this.population.forEach(dango => {
       dango.rollover(mx, my);
-    });
-    // for (let i = 0; i < this.population.length; i++) {
-    //   this.population[i].rollover(mx, my);
-    // }
+    })
   }
 
 
@@ -94,9 +83,9 @@ class Population {
   // ='='='='='='='='='='='='='='='='='= DISPLAYING DANGOS OF THIS POPULATION ='='='='='='='='='='='='='='='='='=
   
   display() {
-    for (let i = 0; i < this.population.length; i++) {
-      this.population[i].display()
-    }
+  this.population.forEach(dango => {
+      dango.display()
+    })
   }
 
 
@@ -127,15 +116,4 @@ class Population {
     }
     return record;
   }
-
-
-  // just for checkouts (it'll die soon...)
-  printBrightness(){
-    for (let i = 0; i < this.population.length; i++) {
-      console.log("o brilho dele era assim ó")
-      console.log(i)
-      console.log(this.population[i].dna.genes[3])
-    }
-  }
-
 }

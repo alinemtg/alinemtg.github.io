@@ -131,7 +131,6 @@ function nextGen() {
   var isRealTime = false
   population.setHourInfluence()  // before selection, the fitness influenced by hour has to be updated!
   population.selection() 
-  // population.printBrightness()
   population.reproduction() 
   day.passHour(isRealTime) 
 }

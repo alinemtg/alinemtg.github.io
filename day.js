@@ -26,6 +26,7 @@ class Day {
     getHourInfluence(brightness, eyes_type, cheeks_type){
         var influence = 1
 
+
     // ='='='='='='='='= A.M. ='='='='='='='='=
 
         if (this.hour>=5 && this.hour<10){
