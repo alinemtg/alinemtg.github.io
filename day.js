@@ -30,9 +30,9 @@ class Day {
 
         if (this.hour>=5 && this.hour<10){
             if (brightness>=0.3){
-                influence = influence * 1.25
+                influence = influence * 1.50
             }else{
-                influence = influence *  0.75
+                influence = influence *  0.50
             }
 
             if (eyes_type == 1) {
@@ -43,9 +43,9 @@ class Day {
 
         } else if (this.hour>=10 && this.hour<15) {
             if (brightness>=0.3){
-                influence = influence *  1.50
+                influence = influence *  1.7
             }else{
-                influence = influence * 0.50
+                influence = influence * 0.3
             }
 
             if (eyes_type == 1) {
@@ -60,9 +60,9 @@ class Day {
 
           else if (this.hour>=15 && this.hour<19) {
             if(brightness<0.4){
-                influence = influence *  1.5
+                influence = influence *  1.35
             }else{
-                influence = influence * 0.5
+                influence = influence * 0.65
             }
 
             if (eyes_type == 1) {
@@ -73,9 +73,9 @@ class Day {
         }
         else if (this.hour>=19 && this.hour<2) {
             if(brightness<0.4){
-                influence = influence * 1.7
+                influence = influence * 1.75
             }else{
-                influence = 0.3
+                influence = influence * 0.25
             }
 
             if (eyes_type == 1) {

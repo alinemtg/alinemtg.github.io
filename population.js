@@ -17,20 +17,27 @@ class Population {
   // ='='='='='='='='= HOUR INFLUENCE ='='='='='='='='=
 
   setHourInfluence(){
-    for (let i = 0; i < this.population.length; i++) {
-      this.population[i].getHourInfluence()
+    this.population.forEach(dango => {
+      dango.getHourInfluence();
+    });
+
+    // for (let i = 0; i < this.population.length; i++) {
+    //   this.population[i].getHourInfluence()
 
     // console.log("o fitness dele ficou assim ó")
     // console.log(i)
     // console.log(this.population[i].getFitness())
-    }
+    // }
   }
 
   // ='='='='='='='='= USER INFLUENCE ='='='='='='='='=
   rollover(mx, my) {
-    for (let i = 0; i < this.population.length; i++) {
-      this.population[i].rollover(mx, my);
-    }
+    this.population.forEach(dango => {
+      dango.rollover(mx, my);
+    });
+    // for (let i = 0; i < this.population.length; i++) {
+    //   this.population[i].rollover(mx, my);
+    // }
   }
 
 
@@ -49,6 +56,7 @@ class Population {
     // Based on fitness, each member will get added to the mating pool a certain number of times
     // A higher fitness = more entries to mating pool = more likely to be picked as a parent
     // A lower fitness = fewer entries to mating pool = less likely to be picked as a parent
+
     for (let i = 0; i < this.population.length; i++) {
       let fitnessNormal = map(this.population[i].getFitness(), 0, maxFitness, 0, 1);
       let n = floor(fitnessNormal * 100); // Arbitrary multiplier
@@ -62,7 +70,7 @@ class Population {
   // Making the next generation
   reproduction() {
     // Refill the population with children from the mating pool
-    for (let i = 0; i < this.population.length; i++) {
+        for (let i = 0; i < this.population.length; i++) {
       // Sping the wheel of fortune to pick two parents
       let m = floor(random(this.matingPool.length));
       let d = floor(random(this.matingPool.length));
