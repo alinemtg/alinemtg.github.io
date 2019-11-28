@@ -29,8 +29,17 @@ function preload(){
   s_cheeks0 = loadImage('/assets/s_cheeks0.png')
   s_cheeks1 = loadImage('/assets/s_cheeks1.png')
   f_eyes0 = loadImage('/assets/f_eyes0.png')
-  f_eyes1 = loadImage('/assets/f_eyes0.png') // change assets!!
-  f_eyes2 = loadImage('/assets/f_eyes0.png')
+  f_eyes1 = loadImage('/assets/f_eyes1.png') // change assets!!
+  f_eyes2 = loadImage('/assets/f_eyes2.png')
+
+  f_body_s = loadImage('/assets/f_body_s.png')
+  s_body_s = loadImage('/assets/s_body_s.png')
+  f_cheeks_s = loadImage('/assets/f_cheeks_s.png')
+  s_cheeks0_s = loadImage('/assets/s_cheeks0_s.png')
+  s_cheeks1_s = loadImage('/assets/s_cheeks1_s.png')
+  f_eyes0_s = loadImage('/assets/f_eyes0_s.png')
+  f_eyes1_s = loadImage('/assets/f_eyes1_s.png') // change assets!!
+  f_eyes2_s = loadImage('/assets/f_eyes2_s.png')
 
   loadFont('./assets/bebas/Bebas-Regular.otf')
 

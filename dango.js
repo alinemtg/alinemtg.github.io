@@ -59,8 +59,8 @@ class Dango {
     
     // ~ adjusting the randomly generated coordinates (we want a full dango on screen) ~
     
+    
     let coordinatesAreOk = false
-
     // canvas borders
     if(this.x + body_w > windowWidth){
       this.x -= body_w
@@ -80,6 +80,7 @@ class Dango {
       // ='='='='='= DISPLAY_BODY ='='='='='=
       
       imageMode(CORNER)
+
       if (this.body_scale>0.3){ 
         tint(this.bodyColor)
         image(f_body, this.x, this.y, body_w, body_h)
@@ -87,9 +88,9 @@ class Dango {
         image(s_body, this.x, this.y, body_w, body_h)
       }else{
         tint(this.bodyColor)
-        image(f_body, this.x, this.y, body_w, body_h)
+        image(f_body_s, this.x, this.y, body_w, body_h)
         tint(255)
-        image(s_body, this.x, this.y, body_w, body_h)
+        image(s_body_s, this.x, this.y, body_w, body_h)
       }
 
 
@@ -99,27 +100,54 @@ class Dango {
       tint(this.eyecolor)
       
       if(this.eyes_type==0){
-        image(f_eyes0, this.x+body_w/2, this.y+body_h/4, f_eyes0.width*this.eye_scale, f_eyes0.height*this.eye_scale)
+        if (this.body_scale>0.3){
+          image(f_eyes0, this.x+body_w/2, this.y+body_h/4, f_eyes0.width*this.eye_scale, f_eyes0.height*this.eye_scale)
+        }else{
+          image(f_eyes0_s, this.x+body_w/2, this.y+body_h/4, f_eyes0.width*this.eye_scale, f_eyes0.height*this.eye_scale)
+        }
       }
+
       if(this.eyes_type==1){
-        image(f_eyes1, this.x+body_w/2, this.y+body_h/4, f_eyes1.width*this.eye_scale, f_eyes0.height*this.eye_scale)
+        if (this.body_scale>0.3){
+          image(f_eyes1, this.x+body_w/2, this.y+body_h/4, f_eyes1.width*this.eye_scale, f_eyes1.height*this.eye_scale)
+        }else{
+          image(f_eyes1_s, this.x+body_w/2, this.y+body_h/4, f_eyes1.width*this.eye_scale, f_eyes1.height*this.eye_scale)
+        }
       }
+
       if(this.eyes_type==2){
-        image(f_eyes2, this.x+body_w/2, this.y+body_h/4, f_eyes2.width*this.eye_scale, f_eyes0.height*this.eye_scale)
+        if (this.body_scale>0.3){
+          image(f_eyes2, this.x+body_w/2, this.y+body_h/4, f_eyes2.width*this.eye_scale, f_eyes2.height*this.eye_scale)
+        }else{
+          image(f_eyes2_s, this.x+body_w/2, this.y+body_h/4, f_eyes2.width*this.eye_scale, f_eyes2.height*this.eye_scale)
+        }
       }
 
 
       // ='='='='='= DISPLAY_CHEEKS ='='='='='=
       
       if(this.cheeks_type==1){
-        tint(this.cheeksColor)
-        image(f_cheeks, this.x+body_w/2, this.y+(2*body_h/4), f_cheeks.width*this.cheeks_scale, f_cheeks.height*this.cheeks_scale)
-        tint (255)
-        image(s_cheeks0, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        if (this.body_scale>0.3){
+          tint(this.cheeksColor)
+          image(f_cheeks, this.x+body_w/2, this.y+(2*body_h/4), f_cheeks.width*this.cheeks_scale, f_cheeks.height*this.cheeks_scale)
+          tint (255)
+          image(s_cheeks0, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        }else{
+          tint(this.cheeksColor)
+          image(f_cheeks_s, this.x+body_w/2, this.y+(2*body_h/4), f_cheeks.width*this.cheeks_scale, f_cheeks.height*this.cheeks_scale)
+          tint (255)
+          image(s_cheeks0_s, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        }
       }
+
       else{
-        tint (this.cheeksColor)
-        image(s_cheeks1, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        if (this.body_scale>0.3){
+          tint (this.cheeksColor)
+          image(s_cheeks1, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        }else{
+          tint (this.cheeksColor)
+          image(s_cheeks1_s, this.x+body_w/2, this.y+(2*body_h/4), s_cheeks0.width*this.cheeks_scale, s_cheeks0.height*this.cheeks_scale)
+        }
       }
 
 
