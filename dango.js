@@ -49,7 +49,7 @@ class Dango {
   }
 
   shake(){
-    for (let i=0; i<16; i++){
+    for (let i=0; i<50; i++){
     this.x += Math.random()*(2-(-2))+(-2)
     this.y += Math.random()*(2-(-2))+(-2)
     }
