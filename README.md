@@ -8,8 +8,8 @@ The inspiration for this came by the characters of a anime that Nagisa (from Cla
 
 
 ***
- NoC Example:
+#### NoC Example:
 ![Screenshot from 2019-12-15 10-21-54](https://user-images.githubusercontent.com/38138702/70863371-49776080-1f26-11ea-8421-55d0b2f4f3d5.png)
 
- Dango Generator:
+#### Dango Generator:
 ![Screenshot from 2019-12-15 10-35-10](https://user-images.githubusercontent.com/38138702/70863397-9f4c0880-1f26-11ea-8420-7250c699212d.png)
