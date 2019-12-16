@@ -3,7 +3,7 @@ This project is a modification of this [repo](https://github.com/nature-of-code/
 What's new includes a set of assets that make up the population, day-night logic to survival that interacts with the dango's body color and more. 
 
 * But, what is Dangos?
-The inspiration for this came by the characters of a anime that Nagisa (from Clannad) watches!
+The inspiration for this came by the characters of an anime that Nagisa (from Clannad) watches!
 
 ***
 #### NoC Example:
